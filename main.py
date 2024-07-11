@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-data = pd.read_csv('path_to_your_data.csv')
+data = pd.read_csv('Dataset.csv')
 
 print(data.info())
 print(data.describe())
@@ -21,8 +21,8 @@ data = pd.get_dummies(data, columns=categorical_cols)
 from scipy import stats
 data = data[(np.abs(stats.zscore(data.select_dtypes(include=[np.number]))) < 3).all(axis=1)]
 
-X = data.drop('target_column', axis=1)  # replace 'target_column' with your target variable name
-y = data['target_column']
+X = data.drop('infraud', axis=1) 
+y = data['infraud']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
